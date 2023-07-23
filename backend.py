@@ -10,28 +10,22 @@ api = Api(app)
 
 db = TinyDB('db.json')
 
-# making a class for a particular resource
-# the get, post methods correspond to get and post requests
-# they are automatically mapped by flask_restful.
-# other methods include put, delete, etc.
+# get all items on grocery list
 class Index(Resource):
 
-	# corresponds to the GET request.
-	# this function is called whenever there
-	# is a GET request for this resource
 	def get(self):
 
 		return db.all(), 200
 
 
-# another resource to calculate the square of a number
+# add item to grocery list
 class Add(Resource):
 
     def get(self, item):
         db.insert({"item": item})
         return {'success': "added item to list"}, 200
 
-	    
+# remove item from grocery list
 class Remove(Resource):
 	
     def get(self, item):
