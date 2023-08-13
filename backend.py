@@ -1,10 +1,13 @@
 # using flask_restful
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse
+from flask_cors import CORS, cross_origin
 from tinydb import TinyDB, Query
 
 # creating the flask app
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 # creating an API object
 api = Api(app)
 
